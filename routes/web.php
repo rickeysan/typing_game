@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\DrillController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,16 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+
+
+Route::resource('/drills', DrillController::class)
+    ->names([
+        'index' => 'drill.index',
+        'create' => 'drill.create',
+        'store' => 'drill.store',
+        'destroy' => 'drill.destroy',
+        'edit' => 'drill.edit',
+        'update' => 'drill.update'
+    ])
+    ->middleware('auth');
