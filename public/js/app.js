@@ -3736,7 +3736,7 @@ var Index = function Index(props) {
   };
 
   console.log('DrillページのIndexコンポーネントです');
-  console.log(props);
+  console.log(props.drills);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
     auth: props.auth,
     errors: props.errors,
@@ -3762,6 +3762,8 @@ var Index = function Index(props) {
                   children: "\u65B0\u898F\u4F5C\u6210"
                 })
               })
+            }), props.drills.length === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+              children: "\u554F\u984C\u306F\u3042\u308A\u307E\u305B\u3093"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {

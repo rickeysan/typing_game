@@ -12,7 +12,7 @@ const Index = (props) => {
     }
 
     console.log('DrillページのIndexコンポーネントです')
-    console.log(props)
+    console.log(props.drills)
 
     return (
         <Authenticated
@@ -31,6 +31,9 @@ const Index = (props) => {
                                     <Button type="submit">新規作成</Button>
                                 </Link>
                             </div>
+                            {props.drills.length === 0 &&
+                                <p>問題はありません</p>
+                            }
                             <table>
                                 <thead>
                                     <tr>
