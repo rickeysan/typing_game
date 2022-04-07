@@ -3870,6 +3870,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Create = function Create(props) {
   console.log('DrillページのShowコンポーネントです');
   console.log(props);
@@ -3896,6 +3897,21 @@ var Create = function Create(props) {
       currentWordNum = _useState6[0],
       setCurrentWordNum = _useState6[1];
 
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(5),
+      _useState8 = _slicedToArray(_useState7, 2),
+      countDownNum = _useState8[0],
+      setCountDwonNum = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      isStart = _useState10[0],
+      setIsStart = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState12 = _slicedToArray(_useState11, 2),
+      isCountDown = _useState12[0],
+      setIsCountDown = _useState12[1];
+
   var makeProblemKeyList = function makeProblemKeyList() {
     var drill = props.drill;
     console.log('makeProblemKeyCodesです');
@@ -3906,11 +3922,31 @@ var Create = function Create(props) {
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     makeProblemKeyList();
-  }, [currentProblemNum]); // useEffect(() => {
-  //     showFirstProblem();
-  // }, [])
-  // const showFirstProblem = () => {
-  // }
+  }, [currentProblemNum]);
+
+  var doDrill = function doDrill() {
+    console.log('練習を開始します');
+    countDown();
+    setIsCountDown(true);
+    setIsStart(false);
+  };
+
+  var countDown = function countDown() {
+    console.log('countDownです');
+    var timer = window.setInterval(function () {
+      setCountDwonNum(function (count) {
+        return count - 1;
+      });
+      console.log(countDownNum);
+
+      if (countDownNum <= 0) {
+        console.log('カウントダウン終了です');
+        setIsCountDown(false);
+        window.clearInterval(timer);
+        return;
+      }
+    }, 1000);
+  };
 
   var handleKeyPress = function handleKeyPress(e) {
     console.log('handleKeyPressです');
@@ -3959,19 +3995,33 @@ var Create = function Create(props) {
               },
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                 className: "card-body",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("h2", {
-                  className: "text-lg",
-                  children: ["\u7B2C", currentProblemNum + 1, "\u554F"]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                  className: "text-2xl",
-                  children: currentProbleKeyList.map(function (key, index) {
-                    console.log('map関数です');
-                    console.log(key, index);
-                    var style = index < currentWordNum ? 'text-red-500' : '';
-                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
-                      className: style,
-                      children: [" ", key]
-                    });
+                children: [isStart && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("h2", {
+                    className: "text-lg",
+                    children: ["\u7B2C", currentProblemNum + 1, "\u554F"]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                    className: "text-2xl",
+                    children: currentProbleKeyList.map(function (key, index) {
+                      console.log('map関数です');
+                      console.log(key, index);
+                      var style = index < currentWordNum ? 'text-red-500' : '';
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
+                        className: style,
+                        children: [" ", key]
+                      }, index);
+                    })
+                  })]
+                }), isCountDown && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+                    children: countDownNum
+                  })
+                }), !isStart && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+                    className: "btn btn-info w-28",
+                    onClick: function onClick() {
+                      return doDrill();
+                    },
+                    children: "\u7DF4\u7FD2\u958B\u59CB!!"
                   })
                 })]
               })
