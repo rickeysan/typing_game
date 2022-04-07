@@ -14,30 +14,49 @@ const Create = (props) => {
 
     })
     const [currentProblemNum, setCurrentProblemNum] = useState(0);
+    const [currentProbleKeyList, setCurrentProblemKeyList] = useState([]);
+    const [currentWordNum, setCurrentWordNum] = useState(0);
 
     const makeProblemKeyCodes = () => {
-        let problemKeyCodes = []
         const drill = props.drill
         console.log('makeProblemKeyCodesです')
-        // console.log(keyCodeMap)
-        // console.log(keyCodeMap.j)
-        // console.log(currentProblemNum)
-        // console.log(drill)
-        // console.log(drill['problem' + currentProblemNum])
-        console.log(Array.from(drill[['problem' + currentProblemNum]]))
-        Array.from(drill['problem' + currentProblemNum]).forEach(
-            (text) => {
-                // console.log(keyCodeMap[text])
-                problemKeyCodes.push(keyCodeMap[text])
-            }
-        )
-        console.log(problemKeyCodes)
+        let problemKye = Array.from(drill[['problem' + currentProblemNum]])
+        console.log(problemKye)
+        setCurrentProblemKeyList(problemKye)
     }
 
     useEffect(() => {
         makeProblemKeyCodes()
     }, [currentProblemNum])
 
+    // useEffect(() => {
+    //     showFirstProblem();
+    // }, [])
+
+    // const showFirstProblem = () => {
+    // }
+
+    const handleKeyPress = (e) => {
+        console.log('handleKeyPressです');
+        console.log(e.key, 'が押されました')
+        console.log(currentProblemNum, '番目です')
+        console.log(currentProbleKeyList[currentWordNum], 'が答えです')
+        if (e.key === currentProbleKeyList[currentWordNum]) {
+            console.log('正解です')
+            // setCurrentWordNum((preCurrentWordNum) => preCurrentWordNum + 1)
+            const newCurrentWordNum = currentWordNum + 1
+
+            setCurrentWordNum(newCurrentWordNum)
+            console.log(currentWordNum)
+            console.log(currentProbleKeyList.length)
+            if (currentWordNum === currentProbleKeyList.length - 1) {
+                console.log('問題クリアです')
+                setCurrentProblemNum(currentProblemNum + 1)
+            }
+        } else {
+            console.log('不正解です')
+        }
+    }
 
 
     return (
@@ -53,10 +72,13 @@ const Create = (props) => {
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 bg-white border-b border-gray-200">
                             練習ページ
-                            <div className="card w-9/12	h-80 bg-base-100 shadow-xl">
+                            <div className="card w-9/12	h-80 bg-base-100 shadow-xl"
+                                tabIndex={0}
+                                onKeyPress={(e) => handleKeyPress(e)}
+                            >
                                 <div className="card-body">
                                     <h2 className="text-lg">第{currentProblemNum + 1}問</h2>
-                                    <p className="text-2xl">If a dog chews shoes whose shoes does he choose?</p>
+                                    <p className="text-2xl">{props.drill['problem' + currentProblemNum]}</p>
                                 </div>
                             </div>
                         </div>

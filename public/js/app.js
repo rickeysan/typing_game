@@ -3886,26 +3886,55 @@ var Create = function Create(props) {
       currentProblemNum = _useState2[0],
       setCurrentProblemNum = _useState2[1];
 
-  var makeProblemKeyCodes = function makeProblemKeyCodes() {
-    var problemKeyCodes = [];
-    var drill = props.drill;
-    console.log('makeProblemKeyCodesです'); // console.log(keyCodeMap)
-    // console.log(keyCodeMap.j)
-    // console.log(currentProblemNum)
-    // console.log(drill)
-    // console.log(drill['problem' + currentProblemNum])
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      currentProbleKeyList = _useState4[0],
+      setCurrentProblemKeyList = _useState4[1];
 
-    console.log(Array.from(drill[['problem' + currentProblemNum]]));
-    Array.from(drill['problem' + currentProblemNum]).forEach(function (text) {
-      // console.log(keyCodeMap[text])
-      problemKeyCodes.push(_master_keymap__WEBPACK_IMPORTED_MODULE_7__["default"][text]);
-    });
-    console.log(problemKeyCodes);
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState6 = _slicedToArray(_useState5, 2),
+      currentWordNum = _useState6[0],
+      setCurrentWordNum = _useState6[1];
+
+  var makeProblemKeyCodes = function makeProblemKeyCodes() {
+    var drill = props.drill;
+    console.log('makeProblemKeyCodesです');
+    var problemKye = Array.from(drill[['problem' + currentProblemNum]]);
+    console.log(problemKye);
+    setCurrentProblemKeyList(problemKye);
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     makeProblemKeyCodes();
-  }, [currentProblemNum]);
+  }, [currentProblemNum]); // useEffect(() => {
+  //     showFirstProblem();
+  // }, [])
+  // const showFirstProblem = () => {
+  // }
+
+  var handleKeyPress = function handleKeyPress(e) {
+    console.log('handleKeyPressです');
+    console.log(e.key, 'が押されました');
+    console.log(currentProblemNum, '番目です');
+    console.log(currentProbleKeyList[currentWordNum], 'が答えです');
+
+    if (e.key === currentProbleKeyList[currentWordNum]) {
+      console.log('正解です'); // setCurrentWordNum((preCurrentWordNum) => preCurrentWordNum + 1)
+
+      var newCurrentWordNum = currentWordNum + 1;
+      setCurrentWordNum(newCurrentWordNum);
+      console.log(currentWordNum);
+      console.log(currentProbleKeyList.length);
+
+      if (currentWordNum === currentProbleKeyList.length - 1) {
+        console.log('問題クリアです');
+        setCurrentProblemNum(currentProblemNum + 1);
+      }
+    } else {
+      console.log('不正解です');
+    }
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
     auth: props.auth,
     errors: props.errors,
@@ -3925,6 +3954,10 @@ var Create = function Create(props) {
             className: "p-6 bg-white border-b border-gray-200",
             children: ["\u7DF4\u7FD2\u30DA\u30FC\u30B8", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
               className: "card w-9/12\th-80 bg-base-100 shadow-xl",
+              tabIndex: 0,
+              onKeyPress: function onKeyPress(e) {
+                return handleKeyPress(e);
+              },
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
                 className: "card-body",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("h2", {
@@ -3932,7 +3965,7 @@ var Create = function Create(props) {
                   children: ["\u7B2C", currentProblemNum + 1, "\u554F"]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
                   className: "text-2xl",
-                  children: "If a dog chews shoes whose shoes does he choose?"
+                  children: props.drill['problem' + currentProblemNum]
                 })]
               })
             })]
