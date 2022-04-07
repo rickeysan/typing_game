@@ -20,6 +20,10 @@ const Create = (props) => {
     const [isStart, setIsStart] = useState(false)
     const [isCountDown, setIsCountDown] = useState(false)
     const [timerNum, setTimerNum] = useState(0)
+    const [isEnd, setIsEnd] = useState(false)
+    const [missNum, setMissNum] = useState(0)
+    const [wpm, setWpm] = useState(0)
+    const [score, setScore] = useState(0)
 
     const makeProblemKeyList = () => {
         const drill = props.drill
@@ -30,7 +34,14 @@ const Create = (props) => {
     }
 
     useEffect(() => {
-        makeProblemKeyList()
+        if (currentProblemNum === 3) {
+            console.log('すべての問題に回答しました');
+            typingScore()
+            setIsEnd(true)
+            setIsStart(false)
+        } else {
+            makeProblemKeyList()
+        }
     }, [currentProblemNum])
 
     const doDrill = () => {
@@ -60,23 +71,6 @@ const Create = (props) => {
         }, 1000)
     }
 
-    // const judgeCountDown = () => {
-    //     console.log('judgeCountDownです')
-    //     if (countDownNum <= 0) {
-    //         console.log('カウントダウン終了です')
-    //         setIsCountDown(false)
-    //         // window.clearInterval(timer)
-    //         setIsStart(true)
-    //         window.clearInterval()
-    //         countTimer()
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     console.log(countDownNum)
-    //     judgeCountDown()
-    // }, [countDown])
-
 
     const handleKeyPress = (e) => {
         console.log('handleKeyPressです');
@@ -92,10 +86,12 @@ const Create = (props) => {
             if (currentWordNum === currentProbleKeyList.length - 1) {
                 console.log('問題クリアです')
                 setCurrentProblemNum(currentProblemNum + 1)
+                setWpm((count) => count + 1)
                 setCurrentWordNum(0)
             }
         } else {
             console.log('不正解です')
+            setMissNum((count) => count + 1)
         }
     }
 
@@ -105,6 +101,13 @@ const Create = (props) => {
         }, 1000)
     }
 
+    const typingScore = () => {
+        setScore((wpm * 2) * (1 - missNum / (wpm * 2)))
+    }
+
+    // useEffect(() => {
+    //     typingScore()
+    // }, [wpm, missNum])
 
     return (
         <Authenticated
@@ -146,6 +149,13 @@ const Create = (props) => {
                                     {!isStart && !isCountDown &&
                                         <>
                                             <button className="btn btn-info w-28" onClick={() => doDrill()}>練習開始!!</button>
+                                        </>
+                                    }
+                                    {isEnd &&
+                                        <>
+                                            <span>お疲れ様でした</span>
+                                            <span>ミスタイプの数：{missNum}</span>
+                                            <span>得点：{score}</span>
                                         </>
                                     }
                                 </div>

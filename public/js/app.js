@@ -3917,6 +3917,26 @@ var Create = function Create(props) {
       timerNum = _useState14[0],
       setTimerNum = _useState14[1];
 
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState16 = _slicedToArray(_useState15, 2),
+      isEnd = _useState16[0],
+      setIsEnd = _useState16[1];
+
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState18 = _slicedToArray(_useState17, 2),
+      missNum = _useState18[0],
+      setMissNum = _useState18[1];
+
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState20 = _slicedToArray(_useState19, 2),
+      wpm = _useState20[0],
+      setWpm = _useState20[1];
+
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState22 = _slicedToArray(_useState21, 2),
+      score = _useState22[0],
+      setScore = _useState22[1];
+
   var makeProblemKeyList = function makeProblemKeyList() {
     var drill = props.drill;
     console.log('makeProblemKeyCodesです');
@@ -3926,7 +3946,14 @@ var Create = function Create(props) {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    makeProblemKeyList();
+    if (currentProblemNum === 3) {
+      console.log('すべての問題に回答しました');
+      typingScore();
+      setIsEnd(true);
+      setIsStart(false);
+    } else {
+      makeProblemKeyList();
+    }
   }, [currentProblemNum]);
 
   var doDrill = function doDrill() {
@@ -3957,22 +3984,7 @@ var Create = function Create(props) {
         return count;
       });
     }, 1000);
-  }; // const judgeCountDown = () => {
-  //     console.log('judgeCountDownです')
-  //     if (countDownNum <= 0) {
-  //         console.log('カウントダウン終了です')
-  //         setIsCountDown(false)
-  //         // window.clearInterval(timer)
-  //         setIsStart(true)
-  //         window.clearInterval()
-  //         countTimer()
-  //     }
-  // }
-  // useEffect(() => {
-  //     console.log(countDownNum)
-  //     judgeCountDown()
-  // }, [countDown])
-
+  };
 
   var handleKeyPress = function handleKeyPress(e) {
     console.log('handleKeyPressです');
@@ -3989,10 +4001,16 @@ var Create = function Create(props) {
       if (currentWordNum === currentProbleKeyList.length - 1) {
         console.log('問題クリアです');
         setCurrentProblemNum(currentProblemNum + 1);
+        setWpm(function (count) {
+          return count + 1;
+        });
         setCurrentWordNum(0);
       }
     } else {
       console.log('不正解です');
+      setMissNum(function (count) {
+        return count + 1;
+      });
     }
   };
 
@@ -4003,6 +4021,13 @@ var Create = function Create(props) {
       });
     }, 1000);
   };
+
+  var typingScore = function typingScore() {
+    setScore(wpm * 2 * (1 - missNum / (wpm * 2)));
+  }; // useEffect(() => {
+  //     typingScore()
+  // }, [wpm, missNum])
+
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
     auth: props.auth,
@@ -4057,6 +4082,14 @@ var Create = function Create(props) {
                     },
                     children: "\u7DF4\u7FD2\u958B\u59CB!!"
                   })
+                }), isEnd && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+                    children: "\u304A\u75B2\u308C\u69D8\u3067\u3057\u305F"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
+                    children: ["\u30DF\u30B9\u30BF\u30A4\u30D7\u306E\u6570\uFF1A", missNum]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
+                    children: ["\u5F97\u70B9\uFF1A", score]
+                  })]
                 })]
               })
             })]
