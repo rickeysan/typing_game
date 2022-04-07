@@ -17,7 +17,7 @@ const Create = (props) => {
     const [currentProbleKeyList, setCurrentProblemKeyList] = useState([]);
     const [currentWordNum, setCurrentWordNum] = useState(0);
 
-    const makeProblemKeyCodes = () => {
+    const makeProblemKeyList = () => {
         const drill = props.drill
         console.log('makeProblemKeyCodesです')
         let problemKye = Array.from(drill[['problem' + currentProblemNum]])
@@ -26,7 +26,7 @@ const Create = (props) => {
     }
 
     useEffect(() => {
-        makeProblemKeyCodes()
+        makeProblemKeyList()
     }, [currentProblemNum])
 
     // useEffect(() => {
@@ -47,11 +47,10 @@ const Create = (props) => {
             const newCurrentWordNum = currentWordNum + 1
 
             setCurrentWordNum(newCurrentWordNum)
-            console.log(currentWordNum)
-            console.log(currentProbleKeyList.length)
             if (currentWordNum === currentProbleKeyList.length - 1) {
                 console.log('問題クリアです')
                 setCurrentProblemNum(currentProblemNum + 1)
+                setCurrentWordNum(0)
             }
         } else {
             console.log('不正解です')
@@ -78,14 +77,22 @@ const Create = (props) => {
                             >
                                 <div className="card-body">
                                     <h2 className="text-lg">第{currentProblemNum + 1}問</h2>
-                                    <p className="text-2xl">{props.drill['problem' + currentProblemNum]}</p>
+                                    <p className="text-2xl">
+                                        {currentProbleKeyList.map((key, index) => {
+                                            console.log('map関数です');
+                                            console.log(key, index)
+                                            const style = index < currentWordNum ? 'text-red-500' : ''
+                                            return (
+                                                <span className={style}> {key}</span>
+                                            )
+                                        })}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </Authenticated>
+        </Authenticated >
     );
 }
 

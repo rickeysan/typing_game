@@ -3896,7 +3896,7 @@ var Create = function Create(props) {
       currentWordNum = _useState6[0],
       setCurrentWordNum = _useState6[1];
 
-  var makeProblemKeyCodes = function makeProblemKeyCodes() {
+  var makeProblemKeyList = function makeProblemKeyList() {
     var drill = props.drill;
     console.log('makeProblemKeyCodesです');
     var problemKye = Array.from(drill[['problem' + currentProblemNum]]);
@@ -3905,7 +3905,7 @@ var Create = function Create(props) {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    makeProblemKeyCodes();
+    makeProblemKeyList();
   }, [currentProblemNum]); // useEffect(() => {
   //     showFirstProblem();
   // }, [])
@@ -3923,12 +3923,11 @@ var Create = function Create(props) {
 
       var newCurrentWordNum = currentWordNum + 1;
       setCurrentWordNum(newCurrentWordNum);
-      console.log(currentWordNum);
-      console.log(currentProbleKeyList.length);
 
       if (currentWordNum === currentProbleKeyList.length - 1) {
         console.log('問題クリアです');
         setCurrentProblemNum(currentProblemNum + 1);
+        setCurrentWordNum(0);
       }
     } else {
       console.log('不正解です');
@@ -3965,7 +3964,15 @@ var Create = function Create(props) {
                   children: ["\u7B2C", currentProblemNum + 1, "\u554F"]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
                   className: "text-2xl",
-                  children: props.drill['problem' + currentProblemNum]
+                  children: currentProbleKeyList.map(function (key, index) {
+                    console.log('map関数です');
+                    console.log(key, index);
+                    var style = index < currentWordNum ? 'text-red-500' : '';
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
+                      className: style,
+                      children: [" ", key]
+                    });
+                  })
                 })]
               })
             })]
