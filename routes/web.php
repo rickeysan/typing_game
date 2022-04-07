@@ -39,6 +39,7 @@ Route::resource('/drills', DrillController::class)
         'store' => 'drill.store',
         'destroy' => 'drill.destroy',
         'edit' => 'drill.edit',
-        'update' => 'drill.update'
+        'update' => 'drill.update',
+        'show' => 'drill.show',
     ])
     ->middleware('auth');

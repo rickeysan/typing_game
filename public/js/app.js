@@ -3770,6 +3770,8 @@ var Index = function Index(props) {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
                     children: "\u30BF\u30A4\u30C8\u30EB"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                    children: "\u7DF4\u7FD2\u3059\u308B"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
                     children: "\u66F4\u65B0"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
                     children: "\u524A\u9664"
@@ -3782,6 +3784,15 @@ var Index = function Index(props) {
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
                       className: "border px-4 py-2",
                       children: drill.title
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                      className: "border px-4 py-2",
+                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
+                        href: route('drill.show', drill.id),
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+                          className: "px-4 py-2 bg-green-500 text-white rounded-lg text-xs font-semibold",
+                          children: "\u7DF4\u7FD2\u3059\u308B"
+                        })
+                      })
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
                       className: "border px-4 py-2",
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
@@ -3813,6 +3824,126 @@ var Index = function Index(props) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Index);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Drill/Show.js":
+/*!******************************************!*\
+  !*** ./resources/js/Pages/Drill/Show.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _Components_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Components/Button */ "./resources/js/Components/Button.js");
+/* harmony import */ var _Components_ValidationErrors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/ValidationErrors */ "./resources/js/Components/ValidationErrors.js");
+/* harmony import */ var _Components_Label__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/Label */ "./resources/js/Components/Label.js");
+/* harmony import */ var _Components_Input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Components/Input */ "./resources/js/Components/Input.js");
+/* harmony import */ var _master_keymap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../master/keymap */ "./resources/js/master/keymap.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+
+var Create = function Create(props) {
+  console.log('DrillページのShowコンポーネントです');
+  console.log(props);
+
+  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({}),
+      data = _useForm.data,
+      setData = _useForm.setData,
+      post = _useForm.post,
+      processing = _useForm.processing,
+      errors = _useForm.errors;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      currentProblemNum = _useState2[0],
+      setCurrentProblemNum = _useState2[1];
+
+  var makeProblemKeyCodes = function makeProblemKeyCodes() {
+    var problemKeyCodes = [];
+    var drill = props.drill;
+    console.log('makeProblemKeyCodesです'); // console.log(keyCodeMap)
+    // console.log(keyCodeMap.j)
+    // console.log(currentProblemNum)
+    // console.log(drill)
+    // console.log(drill['problem' + currentProblemNum])
+
+    console.log(Array.from(drill[['problem' + currentProblemNum]]));
+    Array.from(drill['problem' + currentProblemNum]).forEach(function (text) {
+      // console.log(keyCodeMap[text])
+      problemKeyCodes.push(_master_keymap__WEBPACK_IMPORTED_MODULE_7__["default"][text]);
+    });
+    console.log(problemKeyCodes);
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    makeProblemKeyCodes();
+  }, [currentProblemNum]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    auth: props.auth,
+    errors: props.errors,
+    header: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h2", {
+      className: "font-semibold text-xl text-gray-800 leading-tight",
+      children: "\u7DF4\u7FD2\u554F\u984C\u4E00\u89A7"
+    }),
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Head, {
+      title: "\u7DF4\u7FD2\u554F\u984C\u4E00\u89A7"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+      className: "py-12",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+        className: "max-w-7xl mx-auto sm:px-6 lg:px-8",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          className: "bg-white overflow-hidden shadow-sm sm:rounded-lg",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            className: "p-6 bg-white border-b border-gray-200",
+            children: ["\u7DF4\u7FD2\u30DA\u30FC\u30B8", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+              className: "card w-9/12\th-80 bg-base-100 shadow-xl",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                className: "card-body",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("h2", {
+                  className: "text-lg",
+                  children: ["\u7B2C", currentProblemNum + 1, "\u554F"]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                  className: "text-2xl",
+                  children: "If a dog chews shoes whose shoes does he choose?"
+                })]
+              })
+            })]
+          })
+        })
+      })
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Create);
 
 /***/ }),
 
@@ -4166,6 +4297,109 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/master/keymap.js":
+/*!***************************************!*\
+  !*** ./resources/js/master/keymap.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  "1": 49,
+  "2": 50,
+  "3": 51,
+  "4": 52,
+  "5": 53,
+  "6": 54,
+  "7": 55,
+  "8": 56,
+  "9": 57,
+  "0": 48,
+  "A": 65,
+  "B": 66,
+  "C": 67,
+  "D": 68,
+  "E": 69,
+  "F": 70,
+  "G": 71,
+  "H": 72,
+  "I": 73,
+  "J": 74,
+  "K": 75,
+  "L": 76,
+  "M": 77,
+  "N": 78,
+  "O": 79,
+  "P": 80,
+  "Q": 81,
+  "R": 82,
+  "S": 83,
+  "T": 84,
+  "U": 85,
+  "V": 86,
+  "W": 87,
+  "X": 88,
+  "Y": 89,
+  "Z": 90,
+  "a": 97,
+  "b": 98,
+  "c": 99,
+  "d": 100,
+  "e": 101,
+  "f": 102,
+  "g": 103,
+  "h": 104,
+  "i": 105,
+  "j": 106,
+  "k": 107,
+  "l": 108,
+  "m": 109,
+  "n": 110,
+  "o": 111,
+  "p": 112,
+  "q": 113,
+  "r": 114,
+  "s": 115,
+  "t": 116,
+  "u": 117,
+  "v": 118,
+  "w": 119,
+  "x": 120,
+  "y": 121,
+  "z": 122,
+  "@": 64,
+  "?": 63,
+  ".": 46,
+  ",": 44,
+  "$": 36,
+  "&": 38,
+  "#": 35,
+  "!": 33,
+  "'": 39,
+  "\"": 92,
+  ":": 58,
+  ";": 59,
+  "<": 60,
+  ">": 62,
+  "/": 47,
+  "{": 123,
+  "}": 125,
+  "(": 40,
+  ")": 41,
+  "=": 61,
+  "+": 43,
+  "-": 45,
+  "[": 91,
+  "]": 93,
+  "_": 95
+});
 
 /***/ }),
 
@@ -57346,6 +57580,8 @@ var map = {
 	"./Drill/Edit.js": "./resources/js/Pages/Drill/Edit.js",
 	"./Drill/Index": "./resources/js/Pages/Drill/Index.js",
 	"./Drill/Index.js": "./resources/js/Pages/Drill/Index.js",
+	"./Drill/Show": "./resources/js/Pages/Drill/Show.js",
+	"./Drill/Show.js": "./resources/js/Pages/Drill/Show.js",
 	"./Welcome": "./resources/js/Pages/Welcome.js",
 	"./Welcome.js": "./resources/js/Pages/Welcome.js"
 };

@@ -38,6 +38,7 @@ const Index = (props) => {
                                 <thead>
                                     <tr>
                                         <th>タイトル</th>
+                                        <th>練習する</th>
                                         <th>更新</th>
                                         <th>削除</th>
                                     </tr>
@@ -49,6 +50,13 @@ const Index = (props) => {
                                             <tr key={drill.id}>
                                                 <td className="border px-4 py-2">
                                                     {drill.title}
+                                                </td>
+                                                <td className="border px-4 py-2">
+                                                    <Link href={route('drill.show', drill.id)}>
+                                                        <button className="px-4 py-2 bg-green-500 text-white rounded-lg text-xs font-semibold">
+                                                            練習する
+                                                        </button>
+                                                    </Link>
                                                 </td>
                                                 <td className="border px-4 py-2">
                                                     <Link href={route('drill.edit', drill.id)}>

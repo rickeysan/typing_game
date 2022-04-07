@@ -61,7 +61,7 @@ class DrillController extends Controller
      */
     public function show(Drill $drill)
     {
-        //
+        return Inertia::render('Drill/Show', ['drill' => $drill]);
     }
 
     /**
