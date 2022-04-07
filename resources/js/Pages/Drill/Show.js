@@ -13,13 +13,13 @@ const Create = (props) => {
     const { data, setData, post, processing, errors } = useForm({
 
     })
-    const [currentProblemNum, setCurrentProblemNum] = useState(0);
-    const [currentProbleKeyList, setCurrentProblemKeyList] = useState([]);
-    const [currentWordNum, setCurrentWordNum] = useState(0);
-    const [countDownNum, setCountDwonNum] = useState(5)
+    const [currentProblemNum, setCurrentProblemNum] = useState(0)
+    const [currentProbleKeyList, setCurrentProblemKeyList] = useState([])
+    const [currentWordNum, setCurrentWordNum] = useState(0)
+    const [countDownNum, setCountDownNum] = useState(3)
     const [isStart, setIsStart] = useState(false)
     const [isCountDown, setIsCountDown] = useState(false)
-
+    const [timerNum, setTimerNum] = useState(0)
 
     const makeProblemKeyList = () => {
         const drill = props.drill
@@ -37,26 +37,45 @@ const Create = (props) => {
         console.log('練習を開始します')
         countDown()
         setIsCountDown(true)
-        setIsStart(false)
     }
 
     const countDown = () => {
         console.log('countDownです')
         let timer = window.setInterval(() => {
-            setCountDwonNum((count) => count - 1)
-            console.log(countDownNum)
-
-            if (countDownNum <= 0) {
-                console.log('カウントダウン終了です')
-                setIsCountDown(false)
-
-                window.clearInterval(timer)
-                return
+            setCountDownNum((count) => count - 1)
+            setCountDownNum((count) => {
+                console.log('2つ目のsetCountDownNumです')
+                console.log(count)
+                if (count <= 0) {
+                    console.log('カウントダウン終了です')
+                    setIsCountDown(false)
+                    window.clearInterval(timer)
+                    setIsStart(true)
+                    window.clearInterval()
+                    countTimer()
+                }
+                return count
             }
+            )
         }, 1000)
     }
 
+    // const judgeCountDown = () => {
+    //     console.log('judgeCountDownです')
+    //     if (countDownNum <= 0) {
+    //         console.log('カウントダウン終了です')
+    //         setIsCountDown(false)
+    //         // window.clearInterval(timer)
+    //         setIsStart(true)
+    //         window.clearInterval()
+    //         countTimer()
+    //     }
+    // }
 
+    // useEffect(() => {
+    //     console.log(countDownNum)
+    //     judgeCountDown()
+    // }, [countDown])
 
 
     const handleKeyPress = (e) => {
@@ -78,6 +97,12 @@ const Create = (props) => {
         } else {
             console.log('不正解です')
         }
+    }
+
+    const countTimer = () => {
+        let timer = window.setInterval(() => {
+            setTimerNum((count) => count + 1)
+        }, 1000)
     }
 
 
@@ -102,10 +127,9 @@ const Create = (props) => {
                                     {isStart &&
                                         <>
                                             <h2 className="text-lg">第{currentProblemNum + 1}問</h2>
+                                            <span>経過時間：{timerNum}秒</span>
                                             <p className="text-2xl">
                                                 {currentProbleKeyList.map((key, index) => {
-                                                    console.log('map関数です');
-                                                    console.log(key, index)
                                                     const style = index < currentWordNum ? 'text-red-500' : ''
                                                     return (
                                                         <span className={style} key={index}> {key}</span>
@@ -119,7 +143,7 @@ const Create = (props) => {
                                             <span>{countDownNum}</span>
                                         </>
                                     }
-                                    {!isStart &&
+                                    {!isStart && !isCountDown &&
                                         <>
                                             <button className="btn btn-info w-28" onClick={() => doDrill()}>練習開始!!</button>
                                         </>
