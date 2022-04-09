@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateDrillRequest;
 use App\Models\Drill;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Problems;
 
 class DrillController extends Controller
 {
@@ -95,11 +96,24 @@ class DrillController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'problem0' => 'required',
             'problem1' => 'required',
             'problem2' => 'required',
+            'problem3' => 'required',
         ]);
-        $drill->update($request->all());
+
+        // dd($drill->problems()->get()->toArray());
+        // DBと一致しているかどうかを判定する
+        // 一致していないものは書き換える
+        $problems_list = $drill->problems()->get()->toArray();
+        foreach ($problems_list as $problem) {
+            $problem_label = 'problem' . $problem['order_id'];
+            if ($problem['content'] !== $request->all()[$problem_label]) {
+
+                $new_record = Problems::find($problem['id']);
+                $new_record->content = $request->all()[$problem_label];
+                $new_record->save();
+            }
+        }
 
         return redirect()->route('drill.index');
     }

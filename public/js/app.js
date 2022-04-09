@@ -3655,11 +3655,11 @@ var Edit = function Edit(props) {
                   handleChange: onHandleChagne
                 })]
               }), problems.map(function (problem, index) {
-                var problem_label = 'problem' + problem.id;
+                var problem_label = 'problem' + problem.order_id;
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
                     forIput: problem_label,
-                    value: "Problem" + problem.id
+                    value: "Problem" + problem.order_id
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
                     type: "text",
                     name: problem_label,

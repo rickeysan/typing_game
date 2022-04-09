@@ -53,10 +53,10 @@ const Edit = (props) => {
                                     <Input type="text" name="title" value={data.title} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
                                 </div>
                                 {problems.map((problem, index) => {
-                                    const problem_label = 'problem' + problem.id
+                                    const problem_label = 'problem' + problem.order_id
                                     return (
                                         <div key={index}>
-                                            <Label forIput={problem_label} value={"Problem" + problem.id} />
+                                            <Label forIput={problem_label} value={"Problem" + problem.order_id} />
                                             <Input type="text" name={problem_label} value={data[problem_label]} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
                                         </div>
                                     )
