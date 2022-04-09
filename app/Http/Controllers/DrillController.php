@@ -101,6 +101,8 @@ class DrillController extends Controller
             'problem3' => 'required',
         ]);
 
+
+
         // dd($drill->problems()->get()->toArray());
         // DBと一致しているかどうかを判定する
         // 一致していないものは書き換える

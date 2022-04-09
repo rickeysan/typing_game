@@ -3598,35 +3598,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var Edit = function Edit(props) {
   console.log('DrillページのEditコンポーネントです');
   console.log(props);
-  console.log(props.problems[0]['content']);
+  var problems = props.problems;
 
   var makeUseForm = function makeUseForm(drill, problems) {
     console.log('makeUseFormです');
-    console.log(drill);
-    console.log(problems);
     var data = {};
 
     for (var i = 0; i < drill.problem_num; i++) {
-      console.log(i + 1 + '番目です');
-      console.log(problems[i]);
       var add_key = 'problem' + (i + 1);
-      console.log('add_keyの値');
-      console.log(add_key);
       var add_value = problems[i].content;
 
       var add_data = _defineProperty({}, add_key, add_value);
 
-      console.log('add_dataの中身');
-      console.log(add_data);
       data = _objectSpread(_objectSpread({}, data), add_data);
-      console.log('マージ後のdata');
     }
 
-    Object.assign(data, {
+    data = _objectSpread(_objectSpread({}, data), {
       'title': drill.title
     });
-    console.log('最後に返すdataです');
-    console.log(data);
     return data;
   };
 
@@ -3635,17 +3624,7 @@ var Edit = function Edit(props) {
       setData = _useForm.setData,
       patch = _useForm.patch,
       processing = _useForm.processing,
-      errors = _useForm.errors; // const { data, setData, patch, processing, errors } = useForm({
-  //     title: props.drill.title,
-  //     problem1: props.problems[0]['content'],
-  //     problem2: props.problems[1]['content'],
-  //     problem3: props.problems[2]['content'],
-  // })
-
-
-  var problems = props.problems;
-  console.log('problemsの中身');
-  console.log(problems);
+      errors = _useForm.errors;
 
   var onHandleChagne = function onHandleChagne(e) {
     console.log('onHandleChangeです');
