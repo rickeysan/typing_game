@@ -3504,6 +3504,7 @@ var Create = function Create(props) {
 
   var addForm = function addForm() {
     console.log('addFormです');
+    console.log(data);
     setFormNum(function (count) {
       return count + 1;
     });

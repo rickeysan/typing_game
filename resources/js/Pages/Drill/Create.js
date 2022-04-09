@@ -43,6 +43,7 @@ const Create = (props) => {
 
     const addForm = () => {
         console.log('addFormです')
+        console.log(data)
         setFormNum((count) => count + 1)
     }
 

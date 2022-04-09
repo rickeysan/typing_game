@@ -10,6 +10,6 @@ class Problems extends Model
     use HasFactory;
 
     protected $fillable = [
-        'content', 'drill_id'
+        'content', 'drill_id', 'order_id'
     ];
 }

@@ -42,14 +42,36 @@ class DrillController extends Controller
      */
     public function store(StoreDrillRequest $request)
     {
+        $problems = $request->all();
+        unset($problems['title']);
+        \Debugbar::debug($request->all());
+        \Debugbar::debug(count($request->all()));
         $request->validate([
             'title' => 'required',
-            'problem0' => 'required',
-            'problem1' => 'required',
-            'problem2' => 'required',
+            // 'problem0' => 'required',
+            // 'problem1' => 'required',
+            // 'problem2' => 'required',
         ]);
+        $problem_num = count($request->all()) - 1;
+        $request['problem_num'] = $problem_num;
         $request['user_id'] = Auth::id();
-        Drill::create($request->all());
+        $drill = Drill::create($request->all());
+        $i = 1;
+        \Debugbar::debug($problems);
+        foreach ($problems as $problem) {
+            \Debugbar::debug($problem);
+            $new_record = new Problems();
+            $new_record->fill(
+                [
+                    'content' => $problem,
+                    'drill_id' => $drill->id,
+                    'order_id' => $i,
+                ]
+            );
+            $new_record->save();
+            \Debugbar::debug($new_record);
+            $i++;
+        }
 
         return redirect()->route('drill.index');
     }
