@@ -17,9 +17,6 @@ class CreateDrillsTable extends Migration
             $table->id();
             $table->string('title');
             $table->integer('user_id');
-            $table->string('problem0');
-            $table->string('problem1');
-            $table->string('problem2');
             $table->timestamps();
         });
     }

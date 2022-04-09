@@ -15,6 +15,8 @@ class CreateProblemsTable extends Migration
     {
         Schema::create('problems', function (Blueprint $table) {
             $table->id();
+            $table->integer('drill_id');
+            $table->string('content');
             $table->timestamps();
         });
     }

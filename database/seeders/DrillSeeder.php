@@ -16,18 +16,12 @@ class DrillSeeder extends Seeder
     {
         DB::table('drills')->insert([
             [
-                'title' => 'お試し',
+                'title' => '初級問題その１',
                 'user_id' => 1,
-                'problem0' => 'Thisispen',
-                'problem1' => 'She is mother',
-                'problem2' => 'your cat',
             ],
             [
-                'title' => 'テスト',
+                'title' => '中級問題その１',
                 'user_id' => 1,
-                'problem0' => 'create_react app',
-                'problem1' => 'php artisan db:seed',
-                'problem2' => 'docker-compose',
             ]
         ]);
     }

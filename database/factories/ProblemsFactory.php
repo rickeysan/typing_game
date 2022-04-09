@@ -13,8 +13,6 @@ class ProblemsFactory extends Factory
      */
     public function definition()
     {
-        return [
-            //
-        ];
+        return [];
     }
 }

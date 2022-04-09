@@ -13,21 +13,6 @@ class DrillFactory extends Factory
      */
     public function definition()
     {
-        return [
-            [
-                'title' => 'お試し',
-                'user_id' => 1,
-                'problem0' => 'Thisispen',
-                'problem1' => 'She is mother',
-                'problem2' => 'your cat',
-            ],
-            [
-                'title' => 'テスト',
-                'user_id' => 1,
-                'problem0' => 'create_react app',
-                'problem1' => 'php artisan db:seed',
-                'problem2' => 'docker-compose',
-            ]
-        ];
+        return [];
     }
 }
