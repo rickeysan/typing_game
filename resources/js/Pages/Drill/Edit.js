@@ -9,14 +9,20 @@ import Input from '@/Components/Input';
 const Edit = (props) => {
     console.log('DrillページのEditコンポーネントです')
     console.log(props)
+    console.log(props.problems[0]['content'])
     const { data, setData, patch, processing, errors } = useForm({
         title: props.drill.title,
+        problem1: props.problems[0]['content'],
+        problem2: props.problems[1]['content'],
+        problem3: props.problems[2]['content'],
     })
     const problems = props.problems
     console.log('problemsの中身')
     console.log(problems)
 
     const onHandleChagne = (e) => {
+        console.log('onHandleChangeです')
+        console.log(e.target.name, e.target.value)
         setData(e.target.name, e.target.value)
     }
 
@@ -47,10 +53,11 @@ const Edit = (props) => {
                                     <Input type="text" name="title" value={data.title} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
                                 </div>
                                 {problems.map((problem, index) => {
+                                    const problem_label = 'problem' + problem.id
                                     return (
-                                        <div>
-                                            <Label forIput={"problem" + problem.id} value={"Problem" + problem.id} />
-                                            <Input type="text" name={"problem" + problem.id} value={problem.content} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
+                                        <div key={index}>
+                                            <Label forIput={problem_label} value={"Problem" + problem.id} />
+                                            <Input type="text" name={problem_label} value={data[problem_label]} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
                                         </div>
                                     )
                                 })}

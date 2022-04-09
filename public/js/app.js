@@ -3592,9 +3592,13 @@ __webpack_require__.r(__webpack_exports__);
 var Edit = function Edit(props) {
   console.log('DrillページのEditコンポーネントです');
   console.log(props);
+  console.log(props.problems[0]['content']);
 
   var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
-    title: props.drill.title
+    title: props.drill.title,
+    problem1: props.problems[0]['content'],
+    problem2: props.problems[1]['content'],
+    problem3: props.problems[2]['content']
   }),
       data = _useForm.data,
       setData = _useForm.setData,
@@ -3607,6 +3611,8 @@ var Edit = function Edit(props) {
   console.log(problems);
 
   var onHandleChagne = function onHandleChagne(e) {
+    console.log('onHandleChangeです');
+    console.log(e.target.name, e.target.value);
     setData(e.target.name, e.target.value);
   };
 
@@ -3649,19 +3655,20 @@ var Edit = function Edit(props) {
                   handleChange: onHandleChagne
                 })]
               }), problems.map(function (problem, index) {
+                var problem_label = 'problem' + problem.id;
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
-                    forIput: "problem" + problem.id,
+                    forIput: problem_label,
                     value: "Problem" + problem.id
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
                     type: "text",
-                    name: "problem" + problem.id,
-                    value: problem.content,
+                    name: problem_label,
+                    value: data[problem_label],
                     className: "mt-1 block w-full",
                     isFocused: true,
                     handleChange: onHandleChagne
                   })]
-                });
+                }, index);
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
                 className: "flex items-center justify-end mt-4",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
