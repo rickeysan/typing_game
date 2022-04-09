@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Problems extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'content', 'drill_id'
+    ];
 }

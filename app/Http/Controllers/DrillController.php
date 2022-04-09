@@ -19,7 +19,7 @@ class DrillController extends Controller
     {
         \Debugbar::debug('indexです');
         \Debugbar::debug(Drill::where('user_id', Auth::id())->get());
-
+        // \Debugbar::debug(Drill::where('user_id')->problems());
         return Inertia::render('Drill/Index', ['drills' => Drill::where('user_id', Auth::id())->get()]);
     }
 
@@ -72,7 +72,16 @@ class DrillController extends Controller
      */
     public function edit(Drill $drill)
     {
-        return Inertia::render('Drill/Edit', ['drill' => $drill]);
+        \Debugbar::debug('editです');
+        \Debugbar::debug($drill->problems());
+        \Debugbar::debug($drill->problems()->getEager());
+        // \Debugbar::debug($drill->problems()->get());
+        \Debugbar::debug($drill->problems()->get()->toArray());
+        \Debugbar::debug($drill->problems()->first()->content);
+
+        $problems = $drill->problems()->get()->toArray();
+
+        return Inertia::render('Drill/Edit', ['drill' => $drill, 'problems' => $problems]);
     }
 
     /**

@@ -3591,18 +3591,20 @@ __webpack_require__.r(__webpack_exports__);
 
 var Edit = function Edit(props) {
   console.log('DrillページのEditコンポーネントです');
+  console.log(props);
 
   var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
-    title: props.drill.title,
-    problem0: props.drill.problem0,
-    problem1: props.drill.problem1,
-    problem2: props.drill.problem2
+    title: props.drill.title
   }),
       data = _useForm.data,
       setData = _useForm.setData,
       patch = _useForm.patch,
       processing = _useForm.processing,
       errors = _useForm.errors;
+
+  var problems = props.problems;
+  console.log('problemsの中身');
+  console.log(problems);
 
   var onHandleChagne = function onHandleChagne(e) {
     setData(e.target.name, e.target.value);
@@ -3646,42 +3648,20 @@ var Edit = function Edit(props) {
                   isFocused: true,
                   handleChange: onHandleChagne
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
-                  forIput: "problem0",
-                  value: "Problem0"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                  type: "text",
-                  name: "problem0",
-                  value: data.problem0,
-                  className: "mt-1 block w-full",
-                  isFocused: true,
-                  handleChange: onHandleChagne
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
-                  forIput: "problem1",
-                  value: "Problem1"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                  type: "text",
-                  name: "problem1",
-                  value: data.problem1,
-                  className: "mt-1 block w-full",
-                  isFocused: true,
-                  handleChange: onHandleChagne
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
-                  forIput: "problem2",
-                  value: "Problem2"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                  type: "text",
-                  name: "problem2",
-                  value: data.problem2,
-                  className: "mt-1 block w-full",
-                  isFocused: true,
-                  handleChange: onHandleChagne
-                })]
+              }), problems.map(function (problem, index) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                    forIput: "problem" + problem.id,
+                    value: "Problem" + problem.id
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                    type: "text",
+                    name: "problem" + problem.id,
+                    value: problem.content,
+                    className: "mt-1 block w-full",
+                    isFocused: true,
+                    handleChange: onHandleChagne
+                  })]
+                });
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
                 className: "flex items-center justify-end mt-4",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {

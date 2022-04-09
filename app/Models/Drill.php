@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Problems;
 
 class Drill extends Model
 {
@@ -12,8 +13,9 @@ class Drill extends Model
     protected $fillable = [
         'title',
         'user_id',
-        'problem0',
-        'problem1',
-        'problem2',
     ];
+    public function problems()
+    {
+        return $this->hasMany(Problems::class);
+    }
 }

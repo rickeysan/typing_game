@@ -8,12 +8,13 @@ import Input from '@/Components/Input';
 
 const Edit = (props) => {
     console.log('DrillページのEditコンポーネントです')
+    console.log(props)
     const { data, setData, patch, processing, errors } = useForm({
         title: props.drill.title,
-        problem0: props.drill.problem0,
-        problem1: props.drill.problem1,
-        problem2: props.drill.problem2,
     })
+    const problems = props.problems
+    console.log('problemsの中身')
+    console.log(problems)
 
     const onHandleChagne = (e) => {
         setData(e.target.name, e.target.value)
@@ -45,18 +46,15 @@ const Edit = (props) => {
                                     <Label forIput="title" value="Title" />
                                     <Input type="text" name="title" value={data.title} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
                                 </div>
-                                <div>
-                                    <Label forIput="problem0" value="Problem0" />
-                                    <Input type="text" name="problem0" value={data.problem0} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
-                                </div>
-                                <div>
-                                    <Label forIput="problem1" value="Problem1" />
-                                    <Input type="text" name="problem1" value={data.problem1} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
-                                </div>
-                                <div>
-                                    <Label forIput="problem2" value="Problem2" />
-                                    <Input type="text" name="problem2" value={data.problem2} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
-                                </div>
+                                {problems.map((problem, index) => {
+                                    return (
+                                        <div>
+                                            <Label forIput={"problem" + problem.id} value={"Problem" + problem.id} />
+                                            <Input type="text" name={"problem" + problem.id} value={problem.content} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
+                                        </div>
+                                    )
+                                })}
+
                                 <div className="flex items-center justify-end mt-4">
                                     <Button className="ml-4" processing={processing}>
                                         更新
