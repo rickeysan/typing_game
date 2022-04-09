@@ -3579,6 +3579,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Label__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/Label */ "./resources/js/Components/Label.js");
 /* harmony import */ var _Components_Input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Components/Input */ "./resources/js/Components/Input.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3594,17 +3600,48 @@ var Edit = function Edit(props) {
   console.log(props);
   console.log(props.problems[0]['content']);
 
-  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
-    title: props.drill.title,
-    problem1: props.problems[0]['content'],
-    problem2: props.problems[1]['content'],
-    problem3: props.problems[2]['content']
-  }),
+  var makeUseForm = function makeUseForm(drill, problems) {
+    console.log('makeUseFormです');
+    console.log(drill);
+    console.log(problems);
+    var data = {};
+
+    for (var i = 0; i < drill.problem_num; i++) {
+      console.log(i + 1 + '番目です');
+      console.log(problems[i]);
+      var add_key = 'problem' + (i + 1);
+      console.log('add_keyの値');
+      console.log(add_key);
+      var add_value = problems[i].content;
+
+      var add_data = _defineProperty({}, add_key, add_value);
+
+      console.log('add_dataの中身');
+      console.log(add_data);
+      data = _objectSpread(_objectSpread({}, data), add_data);
+      console.log('マージ後のdata');
+    }
+
+    Object.assign(data, {
+      'title': drill.title
+    });
+    console.log('最後に返すdataです');
+    console.log(data);
+    return data;
+  };
+
+  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)(makeUseForm(props.drill, props.problems)),
       data = _useForm.data,
       setData = _useForm.setData,
       patch = _useForm.patch,
       processing = _useForm.processing,
-      errors = _useForm.errors;
+      errors = _useForm.errors; // const { data, setData, patch, processing, errors } = useForm({
+  //     title: props.drill.title,
+  //     problem1: props.problems[0]['content'],
+  //     problem2: props.problems[1]['content'],
+  //     problem3: props.problems[2]['content'],
+  // })
+
 
   var problems = props.problems;
   console.log('problemsの中身');
