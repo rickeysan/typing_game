@@ -84,7 +84,8 @@ class DrillController extends Controller
      */
     public function show(Drill $drill)
     {
-        return Inertia::render('Drill/Show', ['drill' => $drill]);
+        $problems = $drill->problems()->get()->toArray();
+        return Inertia::render('Drill/Show', ['drill' => $drill, 'problems' => $problems]);
     }
 
     /**

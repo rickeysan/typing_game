@@ -3975,9 +3975,10 @@ var Create = function Create(props) {
       setScore = _useState22[1];
 
   var makeProblemKeyList = function makeProblemKeyList() {
-    var drill = props.drill;
+    var problems = props.problems;
     console.log('makeProblemKeyCodesです');
-    var problemKye = Array.from(drill[['problem' + currentProblemNum]]);
+    console.log(problems);
+    var problemKye = Array.from(problems[currentProblemNum]['content']);
     console.log(problemKye);
     setCurrentProblemKeyList(problemKye);
   };

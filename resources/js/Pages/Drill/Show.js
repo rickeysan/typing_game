@@ -26,9 +26,10 @@ const Create = (props) => {
     const [score, setScore] = useState(0)
 
     const makeProblemKeyList = () => {
-        const drill = props.drill
+        const problems = props.problems
         console.log('makeProblemKeyCodesです')
-        let problemKye = Array.from(drill[['problem' + currentProblemNum]])
+        console.log(problems)
+        let problemKye = Array.from(problems[currentProblemNum]['content'])
         console.log(problemKye)
         setCurrentProblemKeyList(problemKye)
     }
