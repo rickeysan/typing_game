@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Authenticated from '@/Layouts/Authenticated';
 import { Head, Link, useForm } from '@inertiajs/inertia-react';
 import Button from '@/Components/Button';
@@ -7,13 +7,29 @@ import Label from '@/Components/Label';
 import Input from '@/Components/Input';
 
 const Create = (props) => {
-    console.log('DrillページのCreateこんぽーねんとです')
+    console.log('DrillページのCreateコンポーネントです')
+    const [formNum, setFormNum] = useState(3)
+    // const makeUseForm = (drill, problems) => {
+    //     console.log('makeUseFormです')
+    //     let data = {}
+    //     for (let i = 0; i < drill.problem_num; i++) {
+    //         const add_key = 'problem' + (i + 1)
+    //         const add_value = problems[i].content
+    //         const add_data = {
+    //             [add_key]: add_value
+    //         }
+    //         data = { ...data, ...add_data }
+    //     }
+    //     data = { ...data, ...{ 'title': drill.title } }
+    //     return data
+    // }
     const { data, setData, post, processing, errors } = useForm({
         title: '',
-        problem0: '',
         problem1: '',
         problem2: '',
+        problem3: '',
     })
+
 
     const onHandleChagne = (e) => {
         setData(e.target.name, e.target.value)
@@ -23,6 +39,11 @@ const Create = (props) => {
         e.preventDefault()
 
         post(route('drill.store'))
+    }
+
+    const addForm = () => {
+        console.log('addFormです')
+        setFormNum((count) => count + 1)
     }
 
     return (
@@ -44,19 +65,27 @@ const Create = (props) => {
                                     <Label forIput="title" value="Title" />
                                     <Input type="text" name="title" value={data.title} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
                                 </div>
-                                <div>
-                                    <Label forIput="problem0" value="Problem0" />
-                                    <Input type="text" name="problem0" value={data.problem0} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
-                                </div>
-                                <div>
-                                    <Label forIput="problem1" value="Problem1" />
-                                    <Input type="text" name="problem1" value={data.problem1} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
-                                </div>
-                                <div>
-                                    <Label forIput="problem2" value="Problem2" />
-                                    <Input type="text" name="problem2" value={data.problem2} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
-                                </div>
+                                {(() => {
+                                    console.log('フォームのループ処理です')
+                                    console.log(formNum)
+                                    const items = []
+                                    for (let i = 1; i <= formNum; i++) {
+                                        console.log(i)
+                                        const problem_label = 'problem' + i
+                                        items.push(
+                                            <div key={i}>
+                                                <Label forIput={problem_label} value={"Problem" + i} />
+                                                <Input type="text" name={problem_label} value={data[problem_label]} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
+                                            </div>
+                                        )
+                                    }
+                                    return items
+                                })()}
+
                                 <div className="flex items-center justify-end mt-4">
+                                    <button type="button" className="ml-4" onClick={() => addForm()}>
+                                        フォームを追加する
+                                    </button>
                                     <Button className="ml-4" processing={processing}>
                                         作成
                                     </Button>

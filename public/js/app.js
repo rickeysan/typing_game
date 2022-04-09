@@ -3437,6 +3437,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Label__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/Label */ "./resources/js/Components/Label.js");
 /* harmony import */ var _Components_Input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Components/Input */ "./resources/js/Components/Input.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -3448,13 +3460,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Create = function Create(props) {
-  console.log('DrillページのCreateこんぽーねんとです');
+  console.log('DrillページのCreateコンポーネントです');
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(3),
+      _useState2 = _slicedToArray(_useState, 2),
+      formNum = _useState2[0],
+      setFormNum = _useState2[1]; // const makeUseForm = (drill, problems) => {
+  //     console.log('makeUseFormです')
+  //     let data = {}
+  //     for (let i = 0; i < drill.problem_num; i++) {
+  //         const add_key = 'problem' + (i + 1)
+  //         const add_value = problems[i].content
+  //         const add_data = {
+  //             [add_key]: add_value
+  //         }
+  //         data = { ...data, ...add_data }
+  //     }
+  //     data = { ...data, ...{ 'title': drill.title } }
+  //     return data
+  // }
+
 
   var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
     title: '',
-    problem0: '',
     problem1: '',
-    problem2: ''
+    problem2: '',
+    problem3: ''
   }),
       data = _useForm.data,
       setData = _useForm.setData,
@@ -3469,6 +3500,13 @@ var Create = function Create(props) {
   var submit = function submit(e) {
     e.preventDefault();
     post(route('drill.store'));
+  };
+
+  var addForm = function addForm() {
+    console.log('addFormです');
+    setFormNum(function (count) {
+      return count + 1;
+    });
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -3504,49 +3542,44 @@ var Create = function Create(props) {
                   isFocused: true,
                   handleChange: onHandleChagne
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
-                  forIput: "problem0",
-                  value: "Problem0"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                  type: "text",
-                  name: "problem0",
-                  value: data.problem0,
-                  className: "mt-1 block w-full",
-                  isFocused: true,
-                  handleChange: onHandleChagne
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
-                  forIput: "problem1",
-                  value: "Problem1"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                  type: "text",
-                  name: "problem1",
-                  value: data.problem1,
-                  className: "mt-1 block w-full",
-                  isFocused: true,
-                  handleChange: onHandleChagne
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
-                  forIput: "problem2",
-                  value: "Problem2"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
-                  type: "text",
-                  name: "problem2",
-                  value: data.problem2,
-                  className: "mt-1 block w-full",
-                  isFocused: true,
-                  handleChange: onHandleChagne
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              }), function () {
+                console.log('フォームのループ処理です');
+                console.log(formNum);
+                var items = [];
+
+                for (var i = 1; i <= formNum; i++) {
+                  console.log(i);
+                  var problem_label = 'problem' + i;
+                  items.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                      forIput: problem_label,
+                      value: "Problem" + i
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                      type: "text",
+                      name: problem_label,
+                      value: data[problem_label],
+                      className: "mt-1 block w-full",
+                      isFocused: true,
+                      handleChange: onHandleChagne
+                    })]
+                  }, i));
+                }
+
+                return items;
+              }(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
                 className: "flex items-center justify-end mt-4",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+                  type: "button",
+                  className: "ml-4",
+                  onClick: function onClick() {
+                    return addForm();
+                  },
+                  children: "\u30D5\u30A9\u30FC\u30E0\u3092\u8FFD\u52A0\u3059\u308B"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
                   className: "ml-4",
                   processing: processing,
                   children: "\u4F5C\u6210"
-                })
+                })]
               })]
             })]
           })
