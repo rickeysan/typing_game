@@ -17,10 +17,12 @@ class DrillSeeder extends Seeder
         DB::table('drills')->insert([
             [
                 'title' => '初級問題その１',
+                'problem_num' => 3,
                 'user_id' => 1,
             ],
             [
                 'title' => '中級問題その１',
+                'problem_num' => 4,
                 'user_id' => 1,
             ]
         ]);

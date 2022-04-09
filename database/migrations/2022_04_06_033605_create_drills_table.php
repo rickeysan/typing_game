@@ -16,6 +16,7 @@ class CreateDrillsTable extends Migration
         Schema::create('drills', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->integer('problem_num');
             $table->integer('user_id');
             $table->timestamps();
         });

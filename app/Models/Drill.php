@@ -12,6 +12,7 @@ class Drill extends Model
 
     protected $fillable = [
         'title',
+        'problem_num',
         'user_id',
     ];
     public function problems()
