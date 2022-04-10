@@ -31,7 +31,7 @@ class UpdateDrillRequest extends FormRequest
         $fl_array = preg_grep("!problem[1-9]|[10]!", array_keys($this->request->all()));
         \Debugbar::debug($fl_array);
 
-        $rule_list = ['title' => 'required'];
+        $rule_list = ['title' => ['required', 'max:60']];
         for ($i = 1; $i <= count($fl_array); $i++) {
             \Debugbar::debug($i . '回目です');
 
