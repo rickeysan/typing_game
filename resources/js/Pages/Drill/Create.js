@@ -42,9 +42,10 @@ const Create = (props) => {
     }
 
     const addForm = () => {
-        console.log('addFormです')
-        console.log(data)
-        setFormNum((count) => count + 1)
+        if (formNum <= 9) {
+            setFormNum((count) => count + 1)
+        } else {
+        }
     }
 
     return (

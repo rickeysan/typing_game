@@ -3499,11 +3499,11 @@ var Create = function Create(props) {
   };
 
   var addForm = function addForm() {
-    console.log('addFormです');
-    console.log(data);
-    setFormNum(function (count) {
-      return count + 1;
-    });
+    if (formNum <= 9) {
+      setFormNum(function (count) {
+        return count + 1;
+      });
+    } else {}
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
