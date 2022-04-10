@@ -67,6 +67,8 @@ const Create = (props) => {
 
 
     const handleKeyPress = (e) => {
+        console.log('handleKeyPressです')
+        console.log(e.key)
         if (e.key === currentProbleKeyList[currentWordNum]) {
             console.log('正解です')
             const newCurrentWordNum = currentWordNum + 1
@@ -105,17 +107,17 @@ const Create = (props) => {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 bg-white border-b border-gray-200">
-                            練習ページ
-                            <div className="card w-9/12	h-80 bg-base-100 shadow-xl"
+                            <h2 className="py-2.2 text-xl">練習ページ</h2>
+                            <div className="card w-9/12	h-80 bg-base-100 shadow-xl mr-auto ml-auto"
                                 tabIndex={0}
                                 onKeyPress={(e) => handleKeyPress(e)}
                             >
-                                <div className="card-body">
+                                <div className="card-body justify-center items-center p-5">
                                     {isStart &&
                                         <>
-                                            <h2 className="text-lg">第{currentProblemNum + 1}問</h2>
+                                            <h2 className="text-xg">第{currentProblemNum + 1}問</h2>
                                             <span>経過時間：{timerNum}秒</span>
-                                            <p className="text-2xl">
+                                            <p className="text-3xl">
                                                 {currentProbleKeyList.map((key, index) => {
                                                     const style = index < currentWordNum ? 'text-red-500' : ''
                                                     return (
@@ -127,14 +129,14 @@ const Create = (props) => {
                                     }
                                     {isCountDown &&
                                         <>
-                                            <span>{countDownNum}</span>
+                                            <span className="text-5xl">{countDownNum}</span>
                                         </>
                                     }
                                     {!isStart && !isCountDown && !isEnd &&
                                         <>
                                             <button className="btn btn-info w-28" onClick={() => doDrill()}>練習開始!!</button>
                                             <Link href={route('drill.index')}>
-                                                <button className="px-4 py-2 bg-green-500 text-white rounded-lg text-xs font-semibold">
+                                                <button className="px-4 py-2 mt-16 bg-green-500 text-white rounded-lg text-xs font-semibold">
                                                     一覧画面へ
                                                 </button>
                                             </Link>
@@ -146,7 +148,7 @@ const Create = (props) => {
                                             <span>ミスタイプの数：{missNum}</span>
                                             <span>得点：{score}</span>
                                             <Link href={route('drill.index')}>
-                                                <button className="px-4 py-2 bg-green-500 text-white rounded-lg text-xs font-semibold">
+                                                <button className="px-4 py-2 mt-16 bg-green-500 text-white rounded-lg text-xs font-semibold">
                                                     一覧画面へ
                                                 </button>
                                             </Link>

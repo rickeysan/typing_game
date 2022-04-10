@@ -4033,6 +4033,9 @@ var Create = function Create(props) {
   };
 
   var handleKeyPress = function handleKeyPress(e) {
+    console.log('handleKeyPressです');
+    console.log(e.key);
+
     if (e.key === currentProbleKeyList[currentWordNum]) {
       console.log('正解です');
       var newCurrentWordNum = currentWordNum + 1;
@@ -4082,22 +4085,25 @@ var Create = function Create(props) {
           className: "bg-white overflow-hidden shadow-sm sm:rounded-lg",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
             className: "p-6 bg-white border-b border-gray-200",
-            children: ["\u7DF4\u7FD2\u30DA\u30FC\u30B8", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-              className: "card w-9/12\th-80 bg-base-100 shadow-xl",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h2", {
+              className: "py-2.2 text-xl",
+              children: "\u7DF4\u7FD2\u30DA\u30FC\u30B8"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+              className: "card w-9/12\th-80 bg-base-100 shadow-xl mr-auto ml-auto",
               tabIndex: 0,
               onKeyPress: function onKeyPress(e) {
                 return handleKeyPress(e);
               },
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-                className: "card-body",
+                className: "card-body justify-center items-center p-5",
                 children: [isStart && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("h2", {
-                    className: "text-lg",
+                    className: "text-xg",
                     children: ["\u7B2C", currentProblemNum + 1, "\u554F"]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
                     children: ["\u7D4C\u904E\u6642\u9593\uFF1A", timerNum, "\u79D2"]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
-                    className: "text-2xl",
+                    className: "text-3xl",
                     children: currentProbleKeyList.map(function (key, index) {
                       var style = index < currentWordNum ? 'text-red-500' : '';
                       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
@@ -4108,6 +4114,7 @@ var Create = function Create(props) {
                   })]
                 }), isCountDown && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+                    className: "text-5xl",
                     children: countDownNum
                   })
                 }), !isStart && !isCountDown && !isEnd && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
@@ -4120,7 +4127,7 @@ var Create = function Create(props) {
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
                     href: route('drill.index'),
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
-                      className: "px-4 py-2 bg-green-500 text-white rounded-lg text-xs font-semibold",
+                      className: "px-4 py-2 mt-16 bg-green-500 text-white rounded-lg text-xs font-semibold",
                       children: "\u4E00\u89A7\u753B\u9762\u3078"
                     })
                   })]
@@ -4134,7 +4141,7 @@ var Create = function Create(props) {
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
                     href: route('drill.index'),
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
-                      className: "px-4 py-2 bg-green-500 text-white rounded-lg text-xs font-semibold",
+                      className: "px-4 py-2 mt-16 bg-green-500 text-white rounded-lg text-xs font-semibold",
                       children: "\u4E00\u89A7\u753B\u9762\u3078"
                     })
                   })]

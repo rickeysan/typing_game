@@ -2493,6 +2493,9 @@ body[dir="rtl"] .checkbox:checked,
 .ml-auto {
   margin-left: auto;
 }
+.mt-16 {
+  margin-top: 4rem;
+}
 .block {
   display: block;
 }
@@ -2798,6 +2801,9 @@ body[dir="rtl"] .checkbox:checked,
 .p-1 {
   padding: 0.25rem;
 }
+.p-5 {
+  padding: 1.25rem;
+}
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -2905,6 +2911,14 @@ body[dir="rtl"] .checkbox:checked,
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 .font-medium {
   font-weight: 500;
