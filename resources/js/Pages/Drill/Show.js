@@ -93,10 +93,6 @@ const Create = (props) => {
         setScore((wpm * 2) * (1 - missNum / (wpm * 2)))
     }
 
-    // useEffect(() => {
-    //     typingScore()
-    // }, [wpm, missNum])
-
     return (
         <Authenticated
             auth={props.auth}
@@ -134,9 +130,14 @@ const Create = (props) => {
                                             <span>{countDownNum}</span>
                                         </>
                                     }
-                                    {!isStart && !isCountDown &&
+                                    {!isStart && !isCountDown && !isEnd &&
                                         <>
                                             <button className="btn btn-info w-28" onClick={() => doDrill()}>練習開始!!</button>
+                                            <Link href={route('drill.index')}>
+                                                <button className="px-4 py-2 bg-green-500 text-white rounded-lg text-xs font-semibold">
+                                                    一覧画面へ
+                                                </button>
+                                            </Link>
                                         </>
                                     }
                                     {isEnd &&
@@ -144,6 +145,11 @@ const Create = (props) => {
                                             <span>お疲れ様でした</span>
                                             <span>ミスタイプの数：{missNum}</span>
                                             <span>得点：{score}</span>
+                                            <Link href={route('drill.index')}>
+                                                <button className="px-4 py-2 bg-green-500 text-white rounded-lg text-xs font-semibold">
+                                                    一覧画面へ
+                                                </button>
+                                            </Link>
                                         </>
                                     }
                                 </div>

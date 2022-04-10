@@ -73,6 +73,11 @@ const Edit = (props) => {
                                 })}
 
                                 <div className="flex items-center justify-end mt-4">
+                                    <Link href={route('drill.index')}>
+                                        <button className="px-4 py-2 bg-green-500 text-white rounded-lg text-xs font-semibold">
+                                            一覧画面へ
+                                        </button>
+                                    </Link>
                                     <Button className="ml-4" processing={processing}>
                                         更新
                                     </Button>

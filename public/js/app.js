@@ -3719,13 +3719,19 @@ var Edit = function Edit(props) {
                     handleChange: onHandleChagne
                   })]
                 }, index);
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
                 className: "flex items-center justify-end mt-4",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
+                  href: route('drill.index'),
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+                    className: "px-4 py-2 bg-green-500 text-white rounded-lg text-xs font-semibold",
+                    children: "\u4E00\u89A7\u753B\u9762\u3078"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
                   className: "ml-4",
                   processing: processing,
                   children: "\u66F4\u65B0"
-                })
+                })]
               })]
             })]
           })
@@ -4048,10 +4054,7 @@ var Create = function Create(props) {
 
   var typingScore = function typingScore() {
     setScore(wpm * 2 * (1 - missNum / (wpm * 2)));
-  }; // useEffect(() => {
-  //     typingScore()
-  // }, [wpm, missNum])
-
+  };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
     auth: props.auth,
@@ -4098,14 +4101,20 @@ var Create = function Create(props) {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                     children: countDownNum
                   })
-                }), !isStart && !isCountDown && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+                }), !isStart && !isCountDown && !isEnd && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
                     className: "btn btn-info w-28",
                     onClick: function onClick() {
                       return doDrill();
                     },
                     children: "\u7DF4\u7FD2\u958B\u59CB!!"
-                  })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
+                    href: route('drill.index'),
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+                      className: "px-4 py-2 bg-green-500 text-white rounded-lg text-xs font-semibold",
+                      children: "\u4E00\u89A7\u753B\u9762\u3078"
+                    })
+                  })]
                 }), isEnd && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                     children: "\u304A\u75B2\u308C\u69D8\u3067\u3057\u305F"
@@ -4113,6 +4122,12 @@ var Create = function Create(props) {
                     children: ["\u30DF\u30B9\u30BF\u30A4\u30D7\u306E\u6570\uFF1A", missNum]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
                     children: ["\u5F97\u70B9\uFF1A", score]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
+                    href: route('drill.index'),
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+                      className: "px-4 py-2 bg-green-500 text-white rounded-lg text-xs font-semibold",
+                      children: "\u4E00\u89A7\u753B\u9762\u3078"
+                    })
                   })]
                 })]
               })
