@@ -3976,15 +3976,12 @@ var Create = function Create(props) {
 
   var makeProblemKeyList = function makeProblemKeyList() {
     var problems = props.problems;
-    console.log('makeProblemKeyCodesです');
-    console.log(problems);
     var problemKye = Array.from(problems[currentProblemNum]['content']);
-    console.log(problemKye);
     setCurrentProblemKeyList(problemKye);
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (currentProblemNum === 3) {
+    if (currentProblemNum === props.problems.length) {
       console.log('すべての問題に回答しました');
       typingScore();
       setIsEnd(true);
@@ -3995,23 +3992,19 @@ var Create = function Create(props) {
   }, [currentProblemNum]);
 
   var doDrill = function doDrill() {
-    console.log('練習を開始します');
     countDown();
     setIsCountDown(true);
   };
 
   var countDown = function countDown() {
-    console.log('countDownです');
     var timer = window.setInterval(function () {
       setCountDownNum(function (count) {
         return count - 1;
       });
       setCountDownNum(function (count) {
-        console.log('2つ目のsetCountDownNumです');
         console.log(count);
 
         if (count <= 0) {
-          console.log('カウントダウン終了です');
           setIsCountDown(false);
           window.clearInterval(timer);
           setIsStart(true);
@@ -4025,19 +4018,12 @@ var Create = function Create(props) {
   };
 
   var handleKeyPress = function handleKeyPress(e) {
-    console.log('handleKeyPressです');
-    console.log(e.key, 'が押されました');
-    console.log(currentProblemNum, '番目です');
-    console.log(currentProbleKeyList[currentWordNum], 'が答えです');
-
     if (e.key === currentProbleKeyList[currentWordNum]) {
-      console.log('正解です'); // setCurrentWordNum((preCurrentWordNum) => preCurrentWordNum + 1)
-
+      console.log('正解です');
       var newCurrentWordNum = currentWordNum + 1;
       setCurrentWordNum(newCurrentWordNum);
 
       if (currentWordNum === currentProbleKeyList.length - 1) {
-        console.log('問題クリアです');
         setCurrentProblemNum(currentProblemNum + 1);
         setWpm(function (count) {
           return count + 1;

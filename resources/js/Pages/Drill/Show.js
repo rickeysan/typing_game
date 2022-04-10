@@ -27,15 +27,12 @@ const Create = (props) => {
 
     const makeProblemKeyList = () => {
         const problems = props.problems
-        console.log('makeProblemKeyCodesです')
-        console.log(problems)
         let problemKye = Array.from(problems[currentProblemNum]['content'])
-        console.log(problemKye)
         setCurrentProblemKeyList(problemKye)
     }
 
     useEffect(() => {
-        if (currentProblemNum === 3) {
+        if (currentProblemNum === props.problems.length) {
             console.log('すべての問題に回答しました');
             typingScore()
             setIsEnd(true)
@@ -46,20 +43,16 @@ const Create = (props) => {
     }, [currentProblemNum])
 
     const doDrill = () => {
-        console.log('練習を開始します')
         countDown()
         setIsCountDown(true)
     }
 
     const countDown = () => {
-        console.log('countDownです')
         let timer = window.setInterval(() => {
             setCountDownNum((count) => count - 1)
             setCountDownNum((count) => {
-                console.log('2つ目のsetCountDownNumです')
                 console.log(count)
                 if (count <= 0) {
-                    console.log('カウントダウン終了です')
                     setIsCountDown(false)
                     window.clearInterval(timer)
                     setIsStart(true)
@@ -74,18 +67,12 @@ const Create = (props) => {
 
 
     const handleKeyPress = (e) => {
-        console.log('handleKeyPressです');
-        console.log(e.key, 'が押されました')
-        console.log(currentProblemNum, '番目です')
-        console.log(currentProbleKeyList[currentWordNum], 'が答えです')
         if (e.key === currentProbleKeyList[currentWordNum]) {
             console.log('正解です')
-            // setCurrentWordNum((preCurrentWordNum) => preCurrentWordNum + 1)
             const newCurrentWordNum = currentWordNum + 1
 
             setCurrentWordNum(newCurrentWordNum)
             if (currentWordNum === currentProbleKeyList.length - 1) {
-                console.log('問題クリアです')
                 setCurrentProblemNum(currentProblemNum + 1)
                 setWpm((count) => count + 1)
                 setCurrentWordNum(0)
