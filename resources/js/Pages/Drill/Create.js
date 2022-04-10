@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Authenticated from '@/Layouts/Authenticated';
 import { Head, Link, useForm } from '@inertiajs/inertia-react';
 import Button from '@/Components/Button';
@@ -9,26 +9,26 @@ import Input from '@/Components/Input';
 const Create = (props) => {
     console.log('DrillページのCreateコンポーネントです')
     const [formNum, setFormNum] = useState(3)
-    // const makeUseForm = (drill, problems) => {
-    //     console.log('makeUseFormです')
-    //     let data = {}
-    //     for (let i = 0; i < drill.problem_num; i++) {
-    //         const add_key = 'problem' + (i + 1)
-    //         const add_value = problems[i].content
-    //         const add_data = {
-    //             [add_key]: add_value
-    //         }
-    //         data = { ...data, ...add_data }
-    //     }
-    //     data = { ...data, ...{ 'title': drill.title } }
-    //     return data
-    // }
+
     const { data, setData, post, processing, errors } = useForm({
-        title: '',
-        problem1: '',
-        problem2: '',
-        problem3: '',
+        'title': '',
+        'problem1': '',
+        'problem2': '',
+        'problem3': '',
     })
+
+    useEffect(() => {
+        console.log('formNum用のuseEffectです')
+        const label = 'problem' + formNum
+        data[label] = ''
+        setData(data)
+        console.log(data)
+    }, [formNum])
+
+
+
+    console.log('errorsの中身です')
+    console.log(errors)
 
 
     const onHandleChagne = (e) => {
@@ -67,11 +67,8 @@ const Create = (props) => {
                                     <Input type="text" name="title" value={data.title} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
                                 </div>
                                 {(() => {
-                                    console.log('フォームのループ処理です')
-                                    console.log(formNum)
                                     const items = []
                                     for (let i = 1; i <= formNum; i++) {
-                                        console.log(i)
                                         const problem_label = 'problem' + i
                                         items.push(
                                             <div key={i}>

@@ -3408,7 +3408,7 @@ function Dashboard(props) {
           className: "bg-white overflow-hidden shadow-sm sm:rounded-lg",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "p-6 bg-white border-b border-gray-200",
-            children: "You're logged in!"
+            children: "\u30BF\u30A4\u30D4\u30F3\u30B0\u3092\u7DF4\u7FD2\u3057\u307E\u3057\u3087\u3046"
           })
         })
       })
@@ -3465,33 +3465,29 @@ var Create = function Create(props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(3),
       _useState2 = _slicedToArray(_useState, 2),
       formNum = _useState2[0],
-      setFormNum = _useState2[1]; // const makeUseForm = (drill, problems) => {
-  //     console.log('makeUseFormです')
-  //     let data = {}
-  //     for (let i = 0; i < drill.problem_num; i++) {
-  //         const add_key = 'problem' + (i + 1)
-  //         const add_value = problems[i].content
-  //         const add_data = {
-  //             [add_key]: add_value
-  //         }
-  //         data = { ...data, ...add_data }
-  //     }
-  //     data = { ...data, ...{ 'title': drill.title } }
-  //     return data
-  // }
-
+      setFormNum = _useState2[1];
 
   var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
-    title: '',
-    problem1: '',
-    problem2: '',
-    problem3: ''
+    'title': '',
+    'problem1': '',
+    'problem2': '',
+    'problem3': ''
   }),
       data = _useForm.data,
       setData = _useForm.setData,
       post = _useForm.post,
       processing = _useForm.processing,
       errors = _useForm.errors;
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log('formNum用のuseEffectです');
+    var label = 'problem' + formNum;
+    data[label] = '';
+    setData(data);
+    console.log(data);
+  }, [formNum]);
+  console.log('errorsの中身です');
+  console.log(errors);
 
   var onHandleChagne = function onHandleChagne(e) {
     setData(e.target.name, e.target.value);
@@ -3544,12 +3540,9 @@ var Create = function Create(props) {
                   handleChange: onHandleChagne
                 })]
               }), function () {
-                console.log('フォームのループ処理です');
-                console.log(formNum);
                 var items = [];
 
                 for (var i = 1; i <= formNum; i++) {
-                  console.log(i);
                   var problem_label = 'problem' + i;
                   items.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {

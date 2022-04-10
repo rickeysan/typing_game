@@ -19,8 +19,6 @@ class DrillController extends Controller
     public function index()
     {
         \Debugbar::debug('indexです');
-        \Debugbar::debug(Drill::where('user_id', Auth::id())->get());
-        // \Debugbar::debug(Drill::where('user_id')->problems());
         return Inertia::render('Drill/Index', ['drills' => Drill::where('user_id', Auth::id())->get()]);
     }
 
@@ -46,12 +44,7 @@ class DrillController extends Controller
         unset($problems['title']);
         \Debugbar::debug($request->all());
         \Debugbar::debug(count($request->all()));
-        $request->validate([
-            'title' => 'required',
-            // 'problem0' => 'required',
-            // 'problem1' => 'required',
-            // 'problem2' => 'required',
-        ]);
+
         $problem_num = count($request->all()) - 1;
         $request['problem_num'] = $problem_num;
         $request['user_id'] = Auth::id();
@@ -96,12 +89,6 @@ class DrillController extends Controller
      */
     public function edit(Drill $drill)
     {
-        \Debugbar::debug('editです');
-        \Debugbar::debug($drill->problems());
-        \Debugbar::debug($drill->problems()->getEager());
-        // \Debugbar::debug($drill->problems()->get());
-        \Debugbar::debug($drill->problems()->get()->toArray());
-        \Debugbar::debug($drill->problems()->first()->content);
 
         $problems = $drill->problems()->get()->toArray();
 
