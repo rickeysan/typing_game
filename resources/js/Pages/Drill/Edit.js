@@ -54,19 +54,18 @@ const Edit = (props) => {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 bg-white border-b border-gray-200">
-
-                            練習の編集ページ
+                            <h2 className="py-2.2 text-xl">練習ドリルの編集ページ</h2>
                             <ValidationErrors errors={errors} />
                             <form onSubmit={submit}>
                                 <div>
-                                    <Label forIput="title" value="Title" />
+                                    <Label forIput="title" value="タイトル" />
                                     <Input type="text" name="title" value={data.title} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
                                 </div>
                                 {problems.map((problem, index) => {
                                     const problem_label = 'problem' + problem.order_id
                                     return (
                                         <div key={index}>
-                                            <Label forIput={problem_label} value={"Problem" + problem.order_id} />
+                                            <Label forIput={problem_label} value={"問題" + problem.order_id} />
                                             <Input type="text" name={problem_label} value={data[problem_label]} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
                                         </div>
                                     )
@@ -78,8 +77,8 @@ const Edit = (props) => {
                                             一覧画面へ
                                         </button>
                                     </Link>
-                                    <Button className="ml-4" processing={processing}>
-                                        更新
+                                    <Button className="ml-4 px-4 py-3 text-lg" processing={processing}>
+                                        編集する
                                     </Button>
                                 </div>
 

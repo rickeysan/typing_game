@@ -59,20 +59,21 @@ const Create = (props) => {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 bg-white border-b border-gray-200">
-                            新規作成ページ
+                            <h2 className="py-2.2 text-xl">新規作成ページ</h2>
+                            <p className="py-1">問題は10個まで追加することができます</p>
                             <ValidationErrors errors={errors} />
                             <form onSubmit={submit}>
                                 <div>
-                                    <Label forIput="title" value="Title" />
-                                    <Input type="text" name="title" value={data.title} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
+                                    <Label forIput="title" value="タイトル" />
+                                    <Input type="text" name="title" value={data.title} className="mt-1 block w-full border-gray-700" isFocused={true} handleChange={onHandleChagne} />
                                 </div>
                                 {(() => {
                                     const items = []
                                     for (let i = 1; i <= formNum; i++) {
                                         const problem_label = 'problem' + i
                                         items.push(
-                                            <div key={i}>
-                                                <Label forIput={problem_label} value={"Problem" + i} />
+                                            <div key={i} className="p-1.5">
+                                                <Label forIput={problem_label} value={"問題" + i} />
                                                 <Input type="text" name={problem_label} value={data[problem_label]} className="mt-1 block w-full" isFocused={true} handleChange={onHandleChagne} />
                                             </div>
                                         )
@@ -80,12 +81,12 @@ const Create = (props) => {
                                     return items
                                 })()}
 
-                                <div className="flex items-center justify-end mt-4">
-                                    <button type="button" className="ml-4" onClick={() => addForm()}>
-                                        フォームを追加する
+                                <div className="flex items-center justify-between mt-4">
+                                    <button type="button" className="text-left bg-zinc-200 ml-4 p-1" onClick={() => addForm()}>
+                                        問題を追加する
                                     </button>
-                                    <Button className="ml-4" processing={processing}>
-                                        作成
+                                    <Button className="ml-4 px-4 py-3 text-lg" processing={processing}>
+                                        作成する
                                     </Button>
                                 </div>
 

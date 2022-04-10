@@ -2376,7 +2376,7 @@ function Input(_ref) {
       type: type,
       name: name,
       value: value,
-      className: "border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm " + className,
+      className: "border-gray-300 p-1 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm " + className,
       ref: input,
       autoComplete: autoComplete,
       required: required,
@@ -3523,19 +3523,25 @@ var Create = function Create(props) {
           className: "bg-white overflow-hidden shadow-sm sm:rounded-lg",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "p-6 bg-white border-b border-gray-200",
-            children: ["\u65B0\u898F\u4F5C\u6210\u30DA\u30FC\u30B8", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_ValidationErrors__WEBPACK_IMPORTED_MODULE_4__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
+              className: "py-2.2 text-xl",
+              children: "\u65B0\u898F\u4F5C\u6210\u30DA\u30FC\u30B8"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+              className: "py-1",
+              children: "\u554F\u984C\u306F10\u500B\u307E\u3067\u8FFD\u52A0\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_ValidationErrors__WEBPACK_IMPORTED_MODULE_4__["default"], {
               errors: errors
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("form", {
               onSubmit: submit,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
                   forIput: "title",
-                  value: "Title"
+                  value: "\u30BF\u30A4\u30C8\u30EB"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
                   type: "text",
                   name: "title",
                   value: data.title,
-                  className: "mt-1 block w-full",
+                  className: "mt-1 block w-full border-gray-700",
                   isFocused: true,
                   handleChange: onHandleChagne
                 })]
@@ -3545,9 +3551,10 @@ var Create = function Create(props) {
                 for (var i = 1; i <= formNum; i++) {
                   var problem_label = 'problem' + i;
                   items.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                    className: "p-1.5",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
                       forIput: problem_label,
-                      value: "Problem" + i
+                      value: "問題" + i
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
                       type: "text",
                       name: problem_label,
@@ -3561,18 +3568,18 @@ var Create = function Create(props) {
 
                 return items;
               }(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                className: "flex items-center justify-end mt-4",
+                className: "flex items-center justify-between mt-4",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
                   type: "button",
-                  className: "ml-4",
+                  className: "text-left bg-zinc-200 ml-4 p-1",
                   onClick: function onClick() {
                     return addForm();
                   },
-                  children: "\u30D5\u30A9\u30FC\u30E0\u3092\u8FFD\u52A0\u3059\u308B"
+                  children: "\u554F\u984C\u3092\u8FFD\u52A0\u3059\u308B"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                  className: "ml-4",
+                  className: "ml-4 px-4 py-3 text-lg",
                   processing: processing,
-                  children: "\u4F5C\u6210"
+                  children: "\u4F5C\u6210\u3059\u308B"
                 })]
               })]
             })]
@@ -3681,14 +3688,17 @@ var Edit = function Edit(props) {
           className: "bg-white overflow-hidden shadow-sm sm:rounded-lg",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             className: "p-6 bg-white border-b border-gray-200",
-            children: ["\u7DF4\u7FD2\u306E\u7DE8\u96C6\u30DA\u30FC\u30B8", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_ValidationErrors__WEBPACK_IMPORTED_MODULE_4__["default"], {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
+              className: "py-2.2 text-xl",
+              children: "\u7DF4\u7FD2\u30C9\u30EA\u30EB\u306E\u7DE8\u96C6\u30DA\u30FC\u30B8"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_ValidationErrors__WEBPACK_IMPORTED_MODULE_4__["default"], {
               errors: errors
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("form", {
               onSubmit: submit,
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
                   forIput: "title",
-                  value: "Title"
+                  value: "\u30BF\u30A4\u30C8\u30EB"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
                   type: "text",
                   name: "title",
@@ -3702,7 +3712,7 @@ var Edit = function Edit(props) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_5__["default"], {
                     forIput: problem_label,
-                    value: "Problem" + problem.order_id
+                    value: "問題" + problem.order_id
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_6__["default"], {
                     type: "text",
                     name: problem_label,
@@ -3721,9 +3731,9 @@ var Edit = function Edit(props) {
                     children: "\u4E00\u89A7\u753B\u9762\u3078"
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                  className: "ml-4",
+                  className: "ml-4 px-4 py-3 text-lg",
                   processing: processing,
-                  children: "\u66F4\u65B0"
+                  children: "\u7DE8\u96C6\u3059\u308B"
                 })]
               })]
             })]
@@ -3790,26 +3800,23 @@ var Index = function Index(props) {
           className: "bg-white overflow-hidden shadow-sm sm:rounded-lg",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "p-6 bg-white border-b border-gray-200",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
-                href: route('drill.create'),
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
-                  type: "submit",
-                  children: "\u65B0\u898F\u4F5C\u6210"
-                })
-              })
-            }), props.drills.length === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-              children: "\u554F\u984C\u306F\u3042\u308A\u307E\u305B\u3093"
+            children: [props.drills.length === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+              children: "\u767B\u9332\u3055\u308C\u305F\u554F\u984C\u306F\u3042\u308A\u307E\u305B\u3093"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
+              className: "w-9/12 mr-auto ml-auto",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                    className: "w-6/12",
                     children: "\u30BF\u30A4\u30C8\u30EB"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                    className: "w-2/12",
                     children: "\u7DF4\u7FD2\u3059\u308B"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                    className: "w-2/12",
                     children: "\u66F4\u65B0"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                    className: "w-2/12",
                     children: "\u524A\u9664"
                   })]
                 })
@@ -3821,27 +3828,27 @@ var Index = function Index(props) {
                       className: "border px-4 py-2",
                       children: drill.title
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                      className: "border px-4 py-2",
+                      className: "border px-4 py-2 text-center",
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
                         href: route('drill.show', drill.id),
                         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                          className: "px-4 py-2 bg-green-500 text-white rounded-lg text-xs font-semibold",
+                          className: "bg-sky-500 px-4 py-2 bg-green-500 text-white rounded-lg text-xs font-semibold",
                           children: "\u7DF4\u7FD2\u3059\u308B"
                         })
                       })
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                      className: "border px-4 py-2",
+                      className: "border px-4 py-2 text-center",
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
                         href: route('drill.edit', drill.id),
                         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                          className: "px-4 py-2 bg-green-500 text-white rounded-lg text-xs font-semibold",
+                          className: "bg-emerald-500 px-4 py-2 bg-green-500 text-white rounded-lg text-xs font-semibold",
                           children: "\u66F4\u65B0"
                         })
                       })
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                      className: "border px-4 py-2",
+                      className: "border px-4 py-2 text-center",
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                        className: "px-4 py-2 bg-red-500 text-white rounded-lg text-xs font-semibold",
+                        className: "bg-rose-500 px-4 py-2 bg-red-500 text-white rounded-lg text-xs font-semibold",
                         onClick: function onClick() {
                           return handleDelete(drill.id);
                         },
@@ -3851,6 +3858,15 @@ var Index = function Index(props) {
                   }, drill.id);
                 })
               })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+              className: "text-center mt-8",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
+                href: route('drill.create'),
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                  type: "submit",
+                  children: "\u65B0\u898F\u4F5C\u6210"
+                })
+              })
             })]
           })
         })
