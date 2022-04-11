@@ -7,7 +7,7 @@ import Label from '@/Components/Label';
 import Input from '@/Components/Input';
 import keyCodeMap from '../../master/keymap'
 
-const Create = (props) => {
+const Show = (props) => {
     console.log('DrillページのShowコンポーネントです')
     console.log(props)
     const { data, setData, post, processing, errors } = useForm({
@@ -168,4 +168,4 @@ const Create = (props) => {
     );
 }
 
-export default Create;
+export default Show;
