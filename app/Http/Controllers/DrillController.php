@@ -41,17 +41,13 @@ class DrillController extends Controller
     {
         $problems = $request->all();
         unset($problems['title']);
-        \Debugbar::debug($request->all());
-        \Debugbar::debug(count($request->all()));
 
         $problem_num = count($request->all()) - 1;
         $request['problem_num'] = $problem_num;
         $request['user_id'] = Auth::id();
         $drill = Drill::create($request->all());
         $i = 1;
-        \Debugbar::debug($problems);
         foreach ($problems as $problem) {
-            \Debugbar::debug($problem);
             $new_record = new Problems();
             $new_record->fill(
                 [
@@ -61,7 +57,6 @@ class DrillController extends Controller
                 ]
             );
             $new_record->save();
-            \Debugbar::debug($new_record);
             $i++;
         }
 
