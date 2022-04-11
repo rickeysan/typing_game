@@ -6,10 +6,11 @@ import ValidationErrors from '@/Components/ValidationErrors';
 import Label from '@/Components/Label';
 import Input from '@/Components/Input';
 import keyCodeMap from '../../master/keymap'
+import { useCallback } from 'react';
 
 const Show = (props) => {
-    console.log('DrillページのShowコンポーネントです')
-    console.log(props)
+    // console.log('DrillページのShowコンポーネントです')
+    // console.log(props)
     const { data, setData, post, processing, errors } = useForm({
 
     })
@@ -34,7 +35,6 @@ const Show = (props) => {
 
     useEffect(() => {
         if (currentProblemNum === props.problems.length) {
-            console.log('すべての問題に回答しました');
             typingScore()
             setIsEnd(true)
             setIsStart(false)
@@ -54,7 +54,6 @@ const Show = (props) => {
         let timer = window.setInterval(() => {
             setCountDownNum((count) => count - 1)
             setCountDownNum((count) => {
-                console.log(count)
                 if (count <= 0) {
                     setIsCountDown(false)
                     window.clearInterval(timer)
@@ -70,10 +69,7 @@ const Show = (props) => {
 
 
     const handleKeyPress = (e) => {
-        console.log('handleKeyPressです')
-        console.log(e.key)
         if (e.key === currentProbleKeyList[currentWordNum]) {
-            console.log('正解です')
             const newCurrentWordNum = currentWordNum + 1
 
             setCurrentWordNum(newCurrentWordNum)
@@ -83,7 +79,6 @@ const Show = (props) => {
                 setCurrentWordNum(0)
             }
         } else {
-            console.log('不正解です')
             setMissNum((count) => count + 1)
         }
     }
@@ -123,8 +118,9 @@ const Show = (props) => {
                                             <p className="text-3xl">
                                                 {currentProbleKeyList.map((key, index) => {
                                                     const style = index < currentWordNum ? 'text-red-500' : ''
+                                                    console.log(key, index)
                                                     return (
-                                                        <span className={style} key={index}> {key}</span>
+                                                        <span className={style} key={index}>{key}</span>
                                                     )
                                                 })}
                                             </p>

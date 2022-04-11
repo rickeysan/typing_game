@@ -3919,10 +3919,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var Show = function Show(props) {
-  console.log('DrillページのShowコンポーネントです');
-  console.log(props);
 
+var Show = function Show(props) {
+  // console.log('DrillページのShowコンポーネントです')
+  // console.log(props)
   var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({}),
       data = _useForm.data,
       setData = _useForm.setData,
@@ -3998,7 +3998,6 @@ var Show = function Show(props) {
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (currentProblemNum === props.problems.length) {
-      console.log('すべての問題に回答しました');
       typingScore();
       setIsEnd(true);
       setIsStart(false);
@@ -4020,8 +4019,6 @@ var Show = function Show(props) {
         return count - 1;
       });
       setCountDownNum(function (count) {
-        console.log(count);
-
         if (count <= 0) {
           setIsCountDown(false);
           window.clearInterval(timer);
@@ -4036,11 +4033,7 @@ var Show = function Show(props) {
   };
 
   var handleKeyPress = function handleKeyPress(e) {
-    console.log('handleKeyPressです');
-    console.log(e.key);
-
     if (e.key === currentProbleKeyList[currentWordNum]) {
-      console.log('正解です');
       var newCurrentWordNum = currentWordNum + 1;
       setCurrentWordNum(newCurrentWordNum);
 
@@ -4052,7 +4045,6 @@ var Show = function Show(props) {
         setCurrentWordNum(0);
       }
     } else {
-      console.log('不正解です');
       setMissNum(function (count) {
         return count + 1;
       });
@@ -4109,9 +4101,10 @@ var Show = function Show(props) {
                     className: "text-3xl",
                     children: currentProbleKeyList.map(function (key, index) {
                       var style = index < currentWordNum ? 'text-red-500' : '';
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
+                      console.log(key, index);
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                         className: style,
-                        children: [" ", key]
+                        children: key
                       }, index);
                     })
                   })]
