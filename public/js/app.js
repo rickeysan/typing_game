@@ -3989,6 +3989,11 @@ var Create = function Create(props) {
       score = _useState22[0],
       setScore = _useState22[1];
 
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+      _useState24 = _slicedToArray(_useState23, 2),
+      finishTime = _useState24[0],
+      setFinishTime = _useState24[1];
+
   var makeProblemKeyList = function makeProblemKeyList() {
     var problems = props.problems;
     var problemKye = Array.from(problems[currentProblemNum]['content']);
@@ -4001,6 +4006,8 @@ var Create = function Create(props) {
       typingScore();
       setIsEnd(true);
       setIsStart(false);
+      setFinishTime(timerNum);
+      window.clearInterval();
     } else {
       makeProblemKeyList();
     }
@@ -4134,6 +4141,8 @@ var Create = function Create(props) {
                 }), isEnd && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                     children: "\u304A\u75B2\u308C\u69D8\u3067\u3057\u305F"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
+                    children: ["\u6642\u9593\uFF1A", finishTime, "\u79D2"]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
                     children: ["\u30DF\u30B9\u30BF\u30A4\u30D7\u306E\u6570\uFF1A", missNum]
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {

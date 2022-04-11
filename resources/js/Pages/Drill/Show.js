@@ -24,6 +24,7 @@ const Create = (props) => {
     const [missNum, setMissNum] = useState(0)
     const [wpm, setWpm] = useState(0)
     const [score, setScore] = useState(0)
+    const [finishTime, setFinishTime] = useState(0)
 
     const makeProblemKeyList = () => {
         const problems = props.problems
@@ -37,6 +38,8 @@ const Create = (props) => {
             typingScore()
             setIsEnd(true)
             setIsStart(false)
+            setFinishTime(timerNum)
+            window.clearInterval()
         } else {
             makeProblemKeyList()
         }
@@ -145,6 +148,7 @@ const Create = (props) => {
                                     {isEnd &&
                                         <>
                                             <span>お疲れ様でした</span>
+                                            <span>時間：{finishTime}秒</span>
                                             <span>ミスタイプの数：{missNum}</span>
                                             <span>得点：{score}</span>
                                             <Link href={route('drill.index')}>
