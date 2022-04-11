@@ -18,7 +18,6 @@ class DrillController extends Controller
      */
     public function index()
     {
-        \Debugbar::debug('indexです');
         return Inertia::render('Drill/Index', ['drills' => Drill::where('user_id', Auth::id())->get()]);
     }
 
